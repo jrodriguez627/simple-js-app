@@ -4,17 +4,9 @@ let pokemonList = [
     {name: "Pikachu", height: 1, types: ['electric']}
 ];
 
-// looping through each pokemon from array
-for (let i = 0; i < pokemonList.length; i++) {
-   
-    let pokemon = pokemonList[i];
-
-    // Check if the height of the pokemon is greater than 1
-    if (pokemon.height > 1) {
-        // If the height is greater than 1, include text 'wow, that's big!'
-        document.write(pokemon.name + " - height: " + pokemon.height + " wow, that's big!" + "<br>");
-    } else {
-        // If the height is not greater than 1, only include the name and height
-        document.write(pokemon.name + " - height: " + pokemon.height + "<br>");
-    }
-}
+pokemonList.forEach(function(pokemon) {
+    console.log("Name: " + pokemon.name);
+    console.log("Height: " + pokemon.height);
+    console.log("Types: " + pokemon.types.join(", "));
+    console.log("");
+});
