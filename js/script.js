@@ -1,42 +1,72 @@
-var pokemonRepository = (function() {
-    // place pokemonList in an IIFE to avoid accessing global state
-    var pokemonList = [
-        {name: "Squirtle", height: 1, types: ['water']},
-        {name: "Charmander", height: 2, types: ['fire']},
-        {name: "Pikachu", height: 1, types: ['electric']}
+let pokemonRepository = (function () {
+    let repository = [
+        {
+            name: "Squirtle",
+            height: 1,
+            types: ["water"],
+        },
+        {
+            name: "Charmander",
+            height: 2,
+            types: ["fire"],
+        },
+        {
+            name: "Pikachu",
+            height: 1,
+            types: ["electric"],
+        },
     ];
-  
-    // define getAll function to return pokemonList array
-    function getAll() {
-        return pokemonList;
-    }
-  
-    // define add function to add new pokemon to pokemonList array
+
     function add(pokemon) {
-        // check if argument is object
-        if (typeof pokemon === 'object' && pokemon !== null) {
-            pokemonList.push(pokemon);
+        if (
+            typeof pokemon === "object" &&
+            "name" in pokemon &&
+            "height" in pokemon &&
+            "types" in pokemon
+        ) {
+            repository.push(pokemon);
         } else {
-            console.error('error: This is not a Pokemon.');
+            console.log("pokemon is not correct");
         }
     }
-  
-    // return an object with references to getAll and add functions
+
+    function getAll() {
+        return repository;
+    }
+
+    function addListItem(pokemon) {
+        let pokemonList = document.querySelector('.pokemon-list');
+        let listpokemon = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerText = pokemon.name;
+        button.classList.add('pokemon-button');
+        listpokemon.appendChild(button);
+        pokemonList.appendChild(listpokemon);
+
+        // add event listener to the button
+        button.addEventListener('click', function() {
+            showDetails(pokemon);
+        });
+    }
+
+    // shows details of the clicked pokemon
+    function showDetails(pokemon) {
+        console.log("Name: " + pokemon.name);
+        console.log("Height: " + pokemon.height);
+        console.log("Types: " + pokemon.types.join(", "));
+    }
+
     return {
+        add: add,
         getAll: getAll,
-        add: add
+        addListItem: addListItem
     };
-  })();
-  
-  var retrievedPokemonList = pokemonRepository.getAll();
-  console.log(pokemonRepository.getAll());
-  pokemonRepository.add({name: "Bulbasaur", height: 2, types: ['grass', 'poison']});
-  console.log(pokemonRepository.getAll());
-  
-  // forEach loop to iterate over each Pokémon in the repository
-  retrievedPokemonList.forEach(function(pokemon) {
-    console.log("Name: " + pokemon.name);
-    console.log("Height: " + pokemon.height);
-    console.log("Types: " + pokemon.types.join(", "));
-    console.log("");
-  });
+})();
+
+pokemonRepository.add({ name: "Bulbasaur", height: 2, types: ['grass', 'poison'] });
+
+console.log(pokemonRepository.getAll());
+
+pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+});
