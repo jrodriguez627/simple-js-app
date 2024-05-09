@@ -1,44 +1,86 @@
-/*.pokemon-button {
-    background-color: #4c60ae;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-  /*  transition-duration: 0.4s;
-    cursor: pointer;
-    background-color: white;
-    color: rgb(115, 3, 3);
-    border: 2px solid #4caf50;
-    }
+/* Custom styles complementary to Bootstrap */
 
+/* Body padding to avoid content under the navbar */
+body {
+    padding-top: 50px; /* Height of the navbar */
+    background-color: rgb(162, 159, 189); /* Light purple-gray background */
+    font-family: Arial, sans-serif; /* Set default font family */
+}
+  
+  /* Header styles */
+h1 {
+color: #4f54f8; /* Dark periwinkle header text */
+font-size: 36px; 
+text-align: center;
+text-shadow: 1px 1px 1px #696969; 
+margin-top: 20px; 
+}
+
+/* Button styles */
+.pokemon-button {
+margin: 10px auto; /* Center buttons horizontally */
+color: #cdc1c1; /* White-gray button text */
+background-color: rgb(49, 84, 147); 
+cursor: pointer;
+font-size: 20px;
+height: 50px;
+width: 200px;
+padding: 10px 20px; 
+align-items: center; /* center vertically */
+}
+
+.pokemon-button:hover {
+background-color: rgb(100, 150, 200); /* Darker blue on hover */
+color: #8e4398; /* Different text color on hover */
+transform: scale(0.9);
+}
+
+/* List styles */
+.pokemon-list {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+gap: 20px;
+}
+
+/* Modal styles */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-    }
-    
-    .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    text-align: center;
-    }
-    
-    .close {
-    color: #aaa;
-    float: right;
-    }
+display: none; 
+position: fixed; 
+z-index: 1; 
+left: 0;
+top: 0;
+width: 100%; 
+height: 100%;
+overflow: auto; 
+}
+
+.modal-content {
+background-color: #5fa3b4; 
+border-radius: 10px; 
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
+padding: 20px; 
+text-align: center; 
+margin: 20% auto; 
+width: 75%;
+}
+
+.modal-image {
+width: 100px; 
+height: 100px;
+display: block;
+margin: 20px auto; 
+}
+
+.close {
+color: #777; 
+font-size: 28px;
+font-weight: bold;
+cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+color: #333; 
+text-decoration: none;
+cursor: pointer; 
+}
